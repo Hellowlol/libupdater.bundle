@@ -25,17 +25,6 @@ def longest_common_substring(s1, s2):
     return s1[x_longest - longest: x_longest]
 
 
-def bm(path, items):
-    results = [0]
-
-    for item in items:
-        m = re.match(item, path)
-        if m:
-            results.append(m.end())
-
-    return max(results)
-
-
 def find_section(path):
     """ helper to find the section for a location."""
     Log.Debug('Section was omitted from the call, lets see if we can find it.')
@@ -116,12 +105,16 @@ def scanner(
     Log.Debug('Calling scanner')
 
     args = []
-    if os.name == 'nt':
-        scannerpath = r'C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe'
+
+    if Prefs['scanner_path'] == '':
+        if os.name == 'nt':
+            scannerpath = r'C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe'
+        else:
+            scannerpath = os.path.join(
+                os.path.expanduser('~'),
+                'Library/Application Support/Plex Media Server/Plex Media Scanner')
     else:
-        scannerpath = os.path.join(
-            os.path.expanduser('~'),
-            'Library/Application Support/Plex Media Server/Plex Media Scanner')
+        scannerpath = Prefs['scanner_path']
 
     Log.Debug('scannerpath was %s' % scannerpath)
 

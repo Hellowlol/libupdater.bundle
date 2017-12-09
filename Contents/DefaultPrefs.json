@@ -7,6 +7,12 @@
         "default": "scan"
     },
     {
+        "id": "scanner_path",
+        "label": "Path to scanner (Not needed):",
+        "type": "text",
+        "default": ""
+    },
+    {
         "id": "path",
         "label": "Path to scan",
         "type": "text",
