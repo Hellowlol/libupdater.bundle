@@ -38,7 +38,7 @@ def bm(path, items):
 
 def find_section(path):
     """ helper to find the section for a location."""
-    Log.Debug.Debug('Section was omitted from the call, lets see if we can find it.')
+    Log.Debug('Section was omitted from the call, lets see if we can find it.')
     secs = []
     sections = XML.ElementFromURL(PMS_URL).xpath('//Directory')
     for section in sections:
@@ -199,7 +199,7 @@ def Start():
 
 @handler(PREFIX, NAME, thumb=ICON, art=ART)
 def MainMenu():
-    Log.Debug.Debug('Creating main menu')
+    Log.Debug('Creating main menu')
 
     oc = ObjectContainer(no_cache=True)
     all_keys = []
@@ -211,7 +211,7 @@ def MainMenu():
         for section in sections:
             key = section.get('key')
             title = section.get('title')
-            Log.Debug.Debug('Added %s to main menu.' % title)
+            Log.Debug('Added %s to main menu.' % title)
 
             oc.add(
                 DirectoryObject(
@@ -238,7 +238,7 @@ def manualmenu(*args, **kwargs):
     oc = ObjectContainer(title2='Manual scan')
 
     if 'action' in kwargs:
-        Log.Debug.Debug('Action in kwargs %s' % kwargs.get('action'))
+        Log.Debug('Action in kwargs %s' % kwargs.get('action'))
         action = kwargs.get('action')
 
     elif Prefs['action']:
