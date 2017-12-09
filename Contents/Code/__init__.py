@@ -61,13 +61,16 @@ def find_section(path):
 
         secs.append(d)
 
+    secs.sort(key=lambda k: k['locmatches'], reverse=True)
     Log.Debug(secs)
-    kek = list(sorted(secs, key=lambda k: k['locmatches']))
 
-    # Made sure this does not point to more then one sections.
-    if [k.get('loc_match') for k in kek].count(kek[0]['locmatches']) > 1:
-        Log.Debug('Root exist on more then one library, pass a library section')
-    return kek[0]['key']
+    if secs:
+        # Made sure this does not point to more then one sections.
+        if [k.get('loc_match') for k in secs].count(secs[0]['locmatches']) > 1:
+            Log.Debug('Root exist on more then one library, pass a library section')
+        return secs[0]['key']
+    else:
+        return ''
 
 
 
