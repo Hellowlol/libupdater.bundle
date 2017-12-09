@@ -94,8 +94,8 @@ def scanner(
         force=None,
         no_thumbs=None,
         chapter_thumbs_only=None,
-        thumbOffset=None,
-        artOffset=None,
+        thumboffset=None,
+        artoffset=None,
         **kwargs):
     """ Mimic the scanner cli. This is intended to be used by programs.
 
@@ -170,7 +170,23 @@ def scanner(
 
         args.append(path)
 
-    # Modifiers.. TODO
+    # Flags
+    if force in truty:
+        args.append('--force')
+
+    if no_thumbs in truty:
+        args.append('no-thumbs')
+
+    if chapter_thumbs_only in truty:
+        args.append('chapter-thumbs-only')
+
+    if thumboffset is not None:
+        args.append('--thumbOffset')
+        args.append(thumboffset)
+
+    if artoffset is not None:
+        args.append('--artOffset')
+        args.append(artoffset)
 
     if args:
         args.insert(0, scannerpath)
