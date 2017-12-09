@@ -1,4 +1,54 @@
 [
-	{
-	}
+    {
+        "id": "action",
+        "label": "Action",
+        "type": "enum",
+        "values": ["scan", "index", "analyze", "analyze-deeply"],
+        "default": "scan"
+    },
+    {
+        "id": "path",
+        "label": "Path to scan",
+        "type": "text",
+        "default": ""
+    },
+
+    {
+        "id": "action_apply",
+        "label": "Items to which actions apply:",
+        "type": "enum",
+        "values": ["file", "directory", "section", "item"],
+        "default": "directory"
+    },
+    {
+        "id": "force",
+        "label": "Force an operation (e.g. refresh)",
+        "type": "bool",
+        "default": true
+    },
+    {
+        "id": "no-thumbs",
+        "label": "Do not regenerate thumbs when analyzing",
+        "type": "bool",
+        "default": false
+    },
+    {
+        "id": "chapter-thumbs-only",
+        "label": "Only generate chapter thumbnails during generate pass",
+        "type": "bool",
+        "default": false
+    },
+
+    {
+        "id": "thumbOffset",
+        "label": "Percent offset into video for thumbnail image generated during media analysis",
+        "type": "int",
+        "default": ""
+    },
+    {
+        "id": "artOffset",
+        "label": "Percent offset into video for art image generated during media analysis",
+        "type": "int",
+        "default": ""
+    }
 ]
