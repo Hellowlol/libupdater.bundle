@@ -2,6 +2,7 @@ import os
 import re
 import subprocess
 
+PREFIX = '/applications/libupdater'
 NAME = 'Library Updater'
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
@@ -58,8 +59,8 @@ def find_section(path):
             Log.Debug('Root exist on more then one library, pass a library section')
         return secs[0]['key']
     else:
-        return ''
         # FIXME
+        return ''
 
 
 def quotes_args(args):
