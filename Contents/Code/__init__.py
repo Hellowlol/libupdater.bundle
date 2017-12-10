@@ -64,6 +64,7 @@ def find_section(path):
 
 
 def quotes_args(args):
+    Log.Debug(args)
     if os.name == 'nt':
         return subprocess.list2cmdline(args)
     else:
@@ -106,7 +107,7 @@ def scanner(
 
     args = []
 
-    if Prefs['scanner_path'] == '':
+    if Prefs['scanner_path'] is None:
         if os.name == 'nt':
             scannerpath = r'C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Scanner.exe'
         else:
