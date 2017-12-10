@@ -155,8 +155,12 @@ def scanner(
         args.append(item)
 
     if file is not None:
-        args.append('--file')
-        args.append(file)
+        Log.Debug('%s is a file but this does not work. Finding parent dir' % file)
+        args.append('--directory')
+        args.append(os.path.dirname(file))
+        # Broken, beaten and disabled
+        #args.append('--file')
+        #args.append(file)
 
     if directory is not None:
         args.append('--directory')
@@ -165,10 +169,12 @@ def scanner(
     if file is None and directory is None and path is not None:
         if os.path.isdir(path):
             args.append('--directory')
+            args.append(path)
         elif os.path.isfile(path):
-            args.append('--file')
-
-        args.append(path)
+            Log.Debug('%s is a file but this does not work. Finding parent dir' % path)
+            args.append('--directory')
+            args.append(os.path.dirname(path))
+            #args.append('--file')
 
     # Flags
     if force in truty:
@@ -249,6 +255,8 @@ def MainMenu():
 def manualmenu(*args, **kwargs):
     oc = ObjectContainer(title2='Manual scan')
 
+    Dict.get('Asshatt')
+    # This should be chained but its done to for the loggig.
     if 'action' in kwargs:
         Log.Debug('Action in kwargs %s' % kwargs.get('action'))
         action = kwargs.get('action')
