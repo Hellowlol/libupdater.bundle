@@ -2,7 +2,6 @@ import os
 import re
 import subprocess
 
-PREFIX = '/video/libraryupdater'
 NAME = 'Library Updater'
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
@@ -60,7 +59,7 @@ def find_section(path):
         return secs[0]['key']
     else:
         return ''
-
+        # FIXME
 
 
 def quotes_args(args):
@@ -141,6 +140,7 @@ def scanner(
         args.append('--scan')
 
     # Loads of stuff is missing here but scan is is the only one i care about
+
     # actions apply.
     if section is None:
         sec = find_section(path)
@@ -255,7 +255,6 @@ def MainMenu():
 def manualmenu(*args, **kwargs):
     oc = ObjectContainer(title2='Manual scan')
 
-    Dict.get('Asshatt')
     # This should be chained but its done to for the loggig.
     if 'action' in kwargs:
         Log.Debug('Action in kwargs %s' % kwargs.get('action'))
